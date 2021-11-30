@@ -11,10 +11,18 @@ class Name_value{
 			value=v;
 	}
 	public: void toString(){
-			cout << name << " " << value << "\n"; 
+			cout << name << "," << value << "\n"; 
 	}
 };
 
+int contains(vector<Name_value> list, Name_value t){
+	for(Name_value l :list){
+		if(l.name == t.name  && l.value == t.value){
+			return 1;
+		}
+	}
+	return 0;
+}
 
 int main() {
 		vector<Name_value> vec;
@@ -24,6 +32,11 @@ int main() {
 		cin >> name;
 		cin >> value;
 		Name_value v(name,value);//constructior
+
+		if(contains(vec,v)){
+			cout << "same name entered, exiting...";
+			return -1;
+		}
 
 		if(v.name == "NoName" && v.value == 0){//when leave condition hit, we leave
 			break;
